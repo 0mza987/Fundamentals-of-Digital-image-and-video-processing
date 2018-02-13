@@ -5,10 +5,10 @@ close all
 clc
 
 % specify the threshold T
-T = 1e-1;
+T = 0.5;
 
 %% read in the original, sharp and noise-free image
-original = im2double(rgb2gray((imread('original_cameraman.jpg'))));
+original = im2double(rgb2gray((imread('week6-1.jpg'))));
 [H, W] = size(original);
 
 %% generate the blurred and noise-corrupted image for experiment
@@ -40,7 +40,7 @@ restored(restored > 1) = 1;
 %% analysis of result
 noisy_psnr = 10 * log10(1 / (norm(original - noisy, 'fro') ^ 2 / H / W));
 restored_psnr = 10 * log10(1 / (norm(original - restored, 'fro') ^ 2 / H / W));
-
+ISNR = restored_psnr - noisy_psnr;
 
 %% visualization
 figure; imshow(original, 'border', 'tight');

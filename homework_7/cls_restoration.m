@@ -22,6 +22,7 @@ C = fft2(Laplace, dim, dim);
 % Complete the implementation of the CLS filter by uncommenting the
 % following line and adding appropriate content
 % R = ???
+R=conj(H)./(H.*H + alpha*(C.*C));
 
 %% CLS filtering
 Y = fft2(image_noisy, dim, dim);
